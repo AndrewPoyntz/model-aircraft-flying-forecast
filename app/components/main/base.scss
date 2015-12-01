@@ -1,0 +1,15 @@
+$fontColour: #000;
+$lightBlue: #0076a9;
+$fontFamily: 'Open Sans', sans-serif;
+
+@mixin breakpoint($point) {
+  @if $point == smallestHeader {
+	@media (min-width: 19em) { @content ; }
+  }
+  @if $point == normalHeader {
+	@media (min-width: 35em)  { @content ; }
+  }
+  @else if $point == bigScreen {
+	@media (min-width: 50em) { @content ; }
+  }
+}

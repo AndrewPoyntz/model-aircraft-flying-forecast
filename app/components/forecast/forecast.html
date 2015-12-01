@@ -1,0 +1,44 @@
+<section ng-controller="ForecastCtrl" ng-init="getForecastData()" id="forecast">
+	<p>A yes/no decision is given below for each location, at a 3 hourly time step, based on the forecast and the thresholds selected.</p>
+	<p>You can set up thresholds for your own aircraft, as well as choosing the time steps to be displayed, by clicking on the settings button in the top right.</p>
+	<div id="currentThresholds">
+		<form ng-submit="selectAircraft()">
+		<p>Current settings/aircraft: <select id="selectAircraft" ng-required="true" ng-model="currentAircraft" ng-options="ac as ac.name for ac in aircraft"></select><br>
+			<span class="thresholds"> Thresholds: Wind speed below {{currentAircraftThresholds.windSpeed}}, chance of precipitation lower than {{currentAircraftThresholds.precipProb}}, visibility better than {{currentAircraftThresholds.visibility.text}}</span>
+		</p>
+		</form>
+	</div>
+
+	<div ng-repeat="location in forecastLocations" class="accordion" ng-class="{open: location.open}">
+		<h2>
+			<span role="button" ng-click="location.open = !location.open" tabindex="0">{{location.name}}
+				<span aria-hidden="true" class="icon">{{location.open ? '&#x25B2;' : '&#x25BC;'}}</span>
+			</span>
+		</h2>
+
+		<div aria-hidden="{{!location.open}}" ng-class="{'open': location.open}" class="accordion-content">
+			<div ng-repeat="day in location.data.days">
+				<h3>{{day.date}}</h3>
+				<table>
+					<tr>
+						<th scope="col">Time</th>
+						<th scope="col">Wind</th>
+						<th scope="col">Chance of rain</th>
+						<th scope="col">Visibility</th>
+						<th scope="col">Flyable</th>
+					</tr>
+					<tr ng-repeat="timestep in day.timesteps">
+						<td>{{timestep.time}}</td>
+						<td>{{timestep.wind.speed}}mph ({{timestep.wind.direction}})</td>
+						<td>{{timestep.precipProb}}%</td>
+						<td>{{timestep.visibility.text}}</td>
+						<td ng-class="{'fly': timestep.status, 'dontFly': !timestep.status}">
+							{{timestep.status ? "Yes" : "No"}}
+						</td>
+					</tr>
+				</table>
+			</div>
+			<p>Issued at: {{location.data.issuedTime}}</p>
+		</div>
+	</div>
+</section>

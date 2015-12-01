@@ -1,0 +1,13 @@
+{
+  "browser" : true,
+  "predef": [ "console", "angular", "X2JS"],
+  "strict" : true,
+  "curly" : true,
+  "eqeqeq" : true,
+  "undef" : true,
+  "trailing" : true,
+  "onevar":true,
+  "forin": true,
+  "plusplus" : false,
+  "noempty" : true
+}

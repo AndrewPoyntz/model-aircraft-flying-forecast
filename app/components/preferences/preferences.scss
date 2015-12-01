@@ -1,0 +1,75 @@
+@import "../main/base";
+
+#preferences aside {
+  display: block;
+  position: fixed;
+  width: calc(100% - 2em);
+  max-width: 30em;
+  padding: 1em;
+  right: -33em;
+  top: 0;
+  background-color: rgba(68, 68, 68, 0.9);
+  height: 100%;
+  overflow: auto;
+  box-shadow: -0px 0px 8px #222, 5px -5px 8px #333 inset;
+  z-index: 1;
+}
+
+#preferences aside, .visible-remove {
+  transition: all 1s;
+}
+
+#preferences aside.visible {
+  right: 0em;
+}
+
+#preferences .panelContent {
+  padding: 1em;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #000 inset;
+  font-size: 90%;
+  header {
+	h2 {
+	  margin: 0;
+	  padding: 0;
+	  font-size: 120%;
+	}
+	button {
+	  position: absolute;
+	  top: 2.5em;
+	  height: 3.5em;
+	  width: 6em;
+	  right: 2em;
+	  border-radius: 10px;
+	  cursor: pointer;
+	}
+  }
+  h3 {
+	font-size: 100%;
+  }
+  ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 1em;
+	li {
+	  padding: 0.5em 0em ;
+	  display: inline-block;
+	  label {
+		padding: 1em;
+	  }
+	  input {
+		padding: 1em;
+	  }
+	}
+  }
+}
+#myAircraft{
+  td.edit, td.delete {
+	width:5em;
+  }
+}
+label {
+  cursor: pointer;
+}

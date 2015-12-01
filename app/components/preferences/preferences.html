@@ -1,0 +1,117 @@
+<div ng-controller="PreferencesCtrl" id="preferences" ng-init="getUserPrefs()">
+	<aside ng-class="{'visible': prefsShown}" aria-hidden="{{!prefsShown}}" class="sidebar">
+		<div class="panelContent">
+			<header>
+				<h2>{{prefTitle}}</h2>
+				<button type="button" aria-label="Close preferences" ng-click="closePrefs()">Close
+					<span aria-hidden="true">X</span></button>
+			</header>
+			<section id="myAircraft">
+				<h3>My Aircraft</h3>
+				<div ng-show="!createFormShown || !editFormShown" aria-hidden="{{createFormShown || editFormShown}}">
+					<span ng-show="userPreferences.aircraft.length <= 1">You have no aircraft set up<br></span>
+					<span ng-show="userPreferences.aircraft.length > 1">
+						<table role="presentation">
+							<tr ng-repeat="aircraft in userPreferences.aircraft" ng-hide="$index == 0">
+								<td>{{aircraft.name}}</td>
+								<td class="edit">
+									<button ng-click="editAircraft($index)">Edit</button>
+								</td>
+								<td class="delete">
+									<button ng-click="deleteAircraft($index)">Delete</button>
+								</td>
+							</tr>
+						</table>
+					</span>
+					<button ng-click="createAircraft()">Add a new aircraft</button>
+				</div>
+				<form ng-submit="addAircraft()" ng-show="createFormShown" aria-hidden="{{!createFormShown}}">
+					<h4>Add a new aircraft</h4>
+					<p>Please give your aircraft a name and set up some weather thresholds.</p>
+					<table role="presentation">
+						<tr>
+							<td><label for="newAircraftName">Aircraft name</label></td>
+							<td><input id="newAircraftName" ng-required="true" type="text" ng-model="newAircraft.name">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="newAircraftWindSpeed">Wind speed below </label></td>
+							<td>
+								<select id="newAircraftWindSpeed" ng-required="true" ng-model="newAircraft.thresholds.windSpeed" ng-options="opt.value as opt.text for opt in windSpeedOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="newAircraftPrecipProb">Precipitation probability below </label></td>
+							<td>
+								<select id="newAircraftPrecipProb" ng-required="true" ng-model="newAircraft.thresholds.precipProb" ng-options="opt.value as opt.text for opt in precipOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="newAircraftVisibility">Visibility at least</label></td>
+							<td>
+								<select id="newAircraftVisibility" ng-required="true" ng-model="newAircraft.thresholds.visibility" ng-options="opt.value as opt.text for opt in visibilityOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<input type="submit" value="Add"><input type="button" value="Cancel" ng-click="cancelNewAircraft()">
+							</td>
+						</tr>
+					</table>
+				</form>
+				<form ng-submit="updateAircraft()" ng-show="editFormShown" aria-hidden="{{!editFormShown}}">
+					<h4>Edit aircraft</h4>
+					<table role="presentation">
+						<tr>
+							<td><label for="editAircraftName">Aircraft name</label></td>
+							<td>
+								<input id="editAircraftName" ng-required="true" type="text" ng-model="editAircraftDetail.name">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="editAircraftWindSpeed">Wind speed below </label></td>
+							<td>
+								<select id="editAircraftWindSpeed" ng-required="true" ng-model="editAircraftDetail.thresholds.windSpeed" ng-options="opt.value as opt.text for opt in windSpeedOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="editAircraftPrecipProb">Precipitation probability below </label></td>
+							<td>
+								<select id="editAircraftPrecipProb" ng-required="true" ng-model="editAircraftDetail.thresholds.precipProb" ng-options="opt.value as opt.text for opt in precipOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="editAircraftVisibility">Visibility at least</label></td>
+							<td>
+								<select id="editAircraftVisibility" ng-required="true" ng-model="editAircraftDetail.thresholds.visibility" ng-options="opt.value as opt.text for opt in visibilityOptions"></select>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<input type="submit" value="Update"><input type="button" value="Cancel" ng-click="cancelEditAircraft()">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</section>
+			<section id="times">
+				<form>
+					<h3>Times</h3>
+					<p>Please select the times which you wish to see.</p>
+					<ul>
+						<li><label tabindex="0" for="prefTime0"><input id="prefTime0" type="checkbox" ng-model="userPreferences.timesteps['0']">0am</label></li>
+						<li><label tabindex="0" for="prefTime3"><input id="prefTime3" type="checkbox" ng-model="userPreferences.timesteps['3']">3am</label></li>
+						<li><label tabindex="0" for="prefTime6"><input id="prefTime6" type="checkbox" ng-model="userPreferences.timesteps['6']">6am</label></li>
+						<li><label tabindex="0" for="prefTime9"><input id="prefTime9" type="checkbox" ng-model="userPreferences.timesteps['9']">9am</label></li>
+						<li><label tabindex="0" for="prefTime12"><input id="prefTime12" type="checkbox" ng-model="userPreferences.timesteps['12']">12pm</label></li>
+						<li><label tabindex="0" for="prefTime15"><input id="prefTime15" type="checkbox" ng-model="userPreferences.timesteps['15']">3pm</label></li>
+						<li><label tabindex="0" for="prefTime18"><input id="prefTime18" type="checkbox" ng-model="userPreferences.timesteps['18']">6pm</label></li>
+						<li><label tabindex="0" for="prefTime21"><input id="prefTime21" type="checkbox" ng-model="userPreferences.timesteps['21']">9pm</label></li>
+					</ul>
+				</form>
+			</section>
+		</div>
+	</aside>
+</div>

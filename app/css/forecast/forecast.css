@@ -1,0 +1,80 @@
+.thresholds {
+  font-size: 85%;
+  padding: 0.5em 0 0 0;
+  display: block; }
+
+#forecast {
+  margin-bottom: 4em; }
+  #forecast p {
+    padding: 1%; }
+  @media (min-width: 19em) {
+    #forecast {
+      padding: 0em; } }
+  @media (min-width: 35em) {
+    #forecast {
+      padding: 0.5em; } }
+
+.accordion h2 {
+  margin: 0; }
+  .accordion h2 span {
+    padding: 10px;
+    background: #ddd;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1px;
+    position: relative;
+    cursor: pointer; }
+    .accordion h2 span .icon {
+      position: absolute;
+      top: 20%;
+      right: 1%;
+      padding: 0;
+      margin: 0; }
+
+.accordion-content {
+  border: 1px solid #ddd;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height linear 0.5s; }
+  @media (min-width: 19em) {
+    .accordion-content {
+      padding: 0em; } }
+  @media (min-width: 35em) {
+    .accordion-content {
+      padding: 0 1em; } }
+  .accordion-content.open {
+    max-height: 5000px;
+    margin: -1px 0 0 0; }
+  .accordion-content .open-add {
+    transition: max-height linear 1s !important; }
+
+table {
+  width: 100%;
+  max-width: 40em;
+  border-collapse: collapse; }
+  table th {
+    text-align: left;
+    padding: 1%;
+    vertical-align: top; }
+  table td {
+    padding: 1%; }
+  table tr {
+    border: 1px solid #fff;
+    border-width: 1px 0 0 0; }
+  table tr:nth-child(2n) {
+    background-color: #ecf0ff;
+    margin: 0.1em; }
+
+.fly, .dontFly {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px; }
+
+.fly {
+  background-color: green; }
+
+.dontFly {
+  background-color: darkred; }
