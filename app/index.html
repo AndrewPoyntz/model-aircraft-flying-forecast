@@ -13,7 +13,10 @@
 </head>
 <body ng-controller="mainCtrl">
 	<header class="banner">
-		<h1><img src="images/MO_logo.gif" alt="Met Office">{{appTitle}}</h1>
+		<h1>
+			<img src="images/plane.png">
+			{{appTitle}}</h1>
+
 		<nav>
 			<button id="preferencesButton" ng-click="showPreferences()"><span aria-hidden="true">&#x2261;<br></span>settings</button>
 		</nav>
@@ -24,21 +27,21 @@
 	</secion>
 	<footer>
 		<span id="copy">
-			&copy; Crown copyright
+			&copy; copyright
 		</span>
 		<ul id="links">
 			<!-- hardcoded to metoffice.gov.uk, would usually be relative links -->
-			<li><a href="http://www.metoffice.gov.uk/about-us/contact" title="Contact us">Contact us</a></li>
-			<li><a href="http://www.metoffice.gov.uk/about-us/help" title="Help">Help</a></li>
-			<li><a href="http://www.metoffice.gov.uk/about-us/legal/privacy-and-cookie" title="Privacy and cookies">Privacy and cookies</a></li>
+			<li><a href="#" title="Contact us">Contact us</a></li>
+			<li><a href="#" title="Help">Help</a></li>
+			<li><a href="#" title="Privacy and cookies">Privacy and cookies</a></li>
 		</ul>
 	</footer>
 </body>
-<script src="../node_modules/angular/angular.min.js"></script>
-<script src="../node_modules/angular-aria/angular-aria.min.js"></script>
-<script src="../node_modules/angular-cookies/angular-cookies.min.js"></script>
-<script src="../node_modules/angular-animate/angular-animate.min.js"></script>
-<script src="../node_modules/sugar/release/sugar-full.development.js"></script>
+<script src="libs/angular.min.js"></script>
+<script src="libs/angular-aria.min.js"></script>
+<script src="libs/angular-cookies.min.js"></script>
+<script src="libs/angular-animate.min.js"></script>
+<script src="libs/sugar-full.development.js"></script>
 <script src="libs/xml2json.min.js"></script>
 <!-- normally I would concatenate, minify & version these files too -->
 <script src="components/main/app.js"></script>

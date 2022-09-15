@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Creative frontend developer interview task",
   "author": "Andrew Poyntz",
+  "scripts": {
+    "gulp": "gulp",
+    "build" : "gulp"
+  },
   "dependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",
